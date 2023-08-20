@@ -1,0 +1,41 @@
+{
+  "name": "paletten",
+  "type": "module",
+  "version": "0.0.1.dev",
+  "description": "Color-palette tokens generator",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "npm pack",
+    "assetgen": "node --experimental-specifier-resolution=node ./__dev__/assetgen/main.js"
+  },
+  "exports": {
+    ".": "./build/index.js"
+  },
+  "files": [
+    "build",
+    "package.json",
+    "README.md",
+    "assets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otsubocloud/paletten.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/otsubocloud/paletten/issues"
+  },
+  "homepage": "https://github.com/otsubocloud/paletten#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "jest": "^29.6.2",
+    "prettier": "^3.0.1",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.1.6"
+  }
+}
