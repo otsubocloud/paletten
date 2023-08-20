@@ -1,7 +1,7 @@
 {
   "name": "paletten",
   "type": "module",
-  "version": "0.0.11-dev",
+  "version": "0.0.13-dev",
   "description": "Color-palette tokens generator",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -17,7 +17,8 @@
     "build",
     "package.json",
     "README.md",
-    "assets"
+    "assets",
+    "src"
   ],
   "repository": {
     "type": "git",

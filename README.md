@@ -2,7 +2,7 @@
 
 Color-palette tokens generator. [beta]
 
-`paletten` automatically generates tokens from just an argument. 
+`paletten` automatically generates tokens from just a color code. 
 ```js
 const colorTokens = paletten('hsl(200 100% 50%)')
 ```
