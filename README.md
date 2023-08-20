@@ -318,10 +318,11 @@ function paletten(
        | string                         // color code
        | { [key in number]: string },   // Set amounted keys range from 0 to 1000
   options?: {
-    format?: 'hex' | 'hsl' | 'rgb',               // default: 'hex'
+    format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
     variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
-    extend?: number[],                            // e.g. [50,150,250]
-    prefix?: string,                              // e.g. '_'
+    extend?: number[],                           // e.g. [50,150,250]
+    prefix?: string,                             // e.g. '_'
+    reversed?: boolean                           // default: false
   }
 )
 ```
@@ -329,10 +330,11 @@ function paletten(
 #### Class API
 ```ts
 class Paletten(config: {
-    format?: 'hex' | 'hsl' | 'rgb',               // default is 'hex'
+    format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
     variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
-    extend?: number[],                            // e.g. [50,150,250]
-    prefix?: string,                              // e.g. '_'
+    extend?: number[],                           // e.g. [50,150,250]
+    prefix?: string,                             // e.g. '_'
+    reversed?: boolean                           // default: false
 })
 ```
 
