@@ -1,4 +1,4 @@
-import _paletten from '../index.js';
+import _paletten from '../index';
 export default class Paletten {
     constructor(commonConfig) {
         this.config = undefined;

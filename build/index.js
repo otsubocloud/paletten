@@ -1,7 +1,8 @@
-import { codeToHsl } from './utils/color/codeToHsl.js';
-import generatePalette from './fn/generatePalette.js';
-import consoleWarn from './fn/consoleWarn.js';
-import generateCalcData from './fn/generateCalcData.js';
+import { PalettenData, } from './types';
+import { codeToHsl } from './utils/color/codeToHsl';
+import generatePalette from './fn/generatePalette';
+import consoleWarn from './fn/consoleWarn';
+import generateCalcData from './fn/generateCalcData';
 const paletten = (value, options) => {
     const calcData = (() => {
         if (!value) {
@@ -39,5 +40,5 @@ const paletten = (value, options) => {
     return generatePalette(calcData, options);
 };
 export default paletten;
-import Paletten from './fn/palettenClass.js';
-export { Paletten };
+import Paletten from './fn/palettenClass';
+export { Paletten, PalettenData };

@@ -1,4 +1,4 @@
-import { VARIANT_COARSE_KEYS, VARIANT_FINE_KEYS, VARIANT_STANDARD_KEYS } from './const.js';
+import { VARIANT_COARSE_KEYS, VARIANT_FINE_KEYS, VARIANT_STANDARD_KEYS } from './const';
 export type HslObj = {
     h: number;
     s: number;

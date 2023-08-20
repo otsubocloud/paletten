@@ -1,7 +1,7 @@
-import isUndefined from '../utils/isUndefined.js';
-import { CALC_UNIT, LIGHTNESS_MAX, LIGHTNESS_MIN, LIGHTNESS_MIN_GRAYISH, } from '../const.js';
-import consoleWarn from './consoleWarn.js';
-import sort from '../utils/sort.js';
+import isUndefined from '../utils/isUndefined';
+import { CALC_UNIT, LIGHTNESS_MAX, LIGHTNESS_MIN, LIGHTNESS_MIN_GRAYISH, } from '../const';
+import consoleWarn from './consoleWarn';
+import sort from '../utils/sort';
 const calcHue = (a, b) => {
     return a < 90 && b > 270
         ? a - (b - 360)

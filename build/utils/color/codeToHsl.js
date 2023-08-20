@@ -1,8 +1,8 @@
-import detectCodeType from './detectCodeType.js';
-import hexCodeToRgb from './hexCodeToRgb.js';
-import rgbToHsl from './rgbToHsl.js';
-import hslCodeToObject from './hslCodeToObject.js';
-import rgbCodeToObject from './rgbCodeToObject.js';
+import detectCodeType from './detectCodeType';
+import hexCodeToRgb from './hexCodeToRgb';
+import rgbToHsl from './rgbToHsl';
+import hslCodeToObject from './hslCodeToObject';
+import rgbCodeToObject from './rgbCodeToObject';
 export const codeToHsl = (code) => {
     switch (detectCodeType(code)) {
         case 'hsl':

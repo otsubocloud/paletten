@@ -1,6 +1,6 @@
-import { CALC_UNIT } from '../const.js';
-import hueConvert from '../utils/color/hueConvert.js';
-import convertFromHsl from '../utils/color/convertFromHsl.js';
+import { CALC_UNIT } from '../const';
+import hueConvert from '../utils/color/hueConvert';
+import convertFromHsl from '../utils/color/convertFromHsl';
 export default function calcValue(amount, calcData, to) {
     for (let row of calcData) {
         const { overKey, underKey, lUnit, sUnit, hUnit, baseHsl, } = row;

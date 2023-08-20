@@ -1,7 +1,7 @@
-import formatHslCode from './formatHslCode.js';
-import formatRgbCode from './formatRgbCode.js';
-import hslToRgb from './hslToRgb.js';
-import rgbToHexCode from './rgbToHexCode.js';
+import formatHslCode from './formatHslCode';
+import formatRgbCode from './formatRgbCode';
+import hslToRgb from './hslToRgb';
+import rgbToHexCode from './rgbToHexCode';
 export default function convertFromHsl(hsl, to) {
     return to === 'hsl'
         ? formatHslCode(hsl)

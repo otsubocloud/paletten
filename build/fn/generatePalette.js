@@ -1,6 +1,6 @@
-import sort from '../utils/sort.js';
-import calcValue from './calcValue.js';
-import { VARIANT_COARSE_KEYS, VARIANT_FINE_KEYS, VARIANT_STANDARD_KEYS, } from '../const.js';
+import sort from '../utils/sort';
+import calcValue from './calcValue';
+import { VARIANT_COARSE_KEYS, VARIANT_FINE_KEYS, VARIANT_STANDARD_KEYS, } from '../const';
 export default function generatePalette(calcData, options) {
     const { variant = 'standard', format = 'hex', prefix, extend, reversed = false, } = options || {};
     const amounts = (() => {
