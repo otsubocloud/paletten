@@ -1,4 +1,3 @@
-import { PalettenData, } from './types';
 import { codeToHsl } from './utils/color/codeToHsl';
 import generatePalette from './fn/generatePalette';
 import consoleWarn from './fn/consoleWarn';
@@ -41,4 +40,4 @@ const paletten = (value, options) => {
 };
 export default paletten;
 import Paletten from './fn/palettenClass';
-export { Paletten, PalettenData };
+export { Paletten };

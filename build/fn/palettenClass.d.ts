@@ -1,4 +1,4 @@
-import { PalettenFunc, Options } from '../types';
+import { PalettenFunc, Options } from '../types.js';
 type CommonConfig = Options;
 export default class Paletten {
     config: CommonConfig | undefined;
