@@ -1,10 +1,8 @@
 # paletten
 
-Color-palette tokens generator.
+Color-palette tokens generator. [beta]
 
-`[beta]`
-
-`paletten` automatically generates tokens from just a argument. 
+`paletten` automatically generates tokens from just an argument. 
 ```js
 const colorTokens = paletten('hsl(200 100% 50%)')
 ```
@@ -32,9 +30,8 @@ return (
 )
 ```
 
+[//paletten will automatically generate other values.]: # ()
 ```jsx
-// paletten will automatically generate other values.
-
 const violet = paletten({
     200: 'hsl(260 83% 76%)',
     700: 'hsl(260 79% 38%)',
@@ -47,9 +44,8 @@ return (
 )
 ```
 
+[//// You can set values range from 0 to 1000]: # ()
 ```jsx
-// You can set values range from 0 to 1000
-
 const gray = paletten({
     0: 'hsl(0,0%,100%)',
     1000: 'hsl(0,0%,13%)',
