@@ -15,34 +15,28 @@ export type CalcData = {
     baseHsl?: HslObj;
 };
 export type Options = {
-    variant?: PalettenVariant;
-    extend?: number[];
-    format?: 'hex' | 'hsl' | 'rgb';
-    prefix?: string;
-    reversed?: boolean;
+    variant?: PalettenVariant | undefined;
+    extend?: readonly number[] | undefined;
+    format?: 'hex' | 'hsl' | 'rgb' | undefined;
+    prefix?: string | undefined;
+    reversed?: boolean | undefined;
 };
-export type PalettenFunc = <T>(value: string | {
+export type PalettenFunc = <Variant extends PalettenVariant | undefined = PalettenVariant, Extend extends readonly number[] | undefined = undefined, Prefix extends string | undefined = undefined, Reversed extends boolean | undefined = undefined>(value: string | {
     [p in number | string]: string;
-}, options?: Options) => T extends PalettenDataWithPrefix ? T : T extends PalettenDataBasic ? T : {
+}, options?: {
+    variant?: Variant;
+    extend?: Extend;
+    prefix?: Prefix;
+    reversed?: Reversed;
+}) => Reversed extends true ? {
     [p: string]: string;
+} : PalettenData<Variant, Extend, Prefix>;
+export type PalettenData<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends readonly number[] | unknown = [], Prefix extends string | unknown = unknown> = Prefix extends string ? PalettenDataWithPrefix<Variant, Extend, Prefix> : PalettenDataNonePrefix<Variant, Extend>;
+type PalettenDataWithPrefix<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends readonly number[] | unknown = [], Prefix extends string = string> = {
+    [key in `${Prefix}${PalettenDataVariantKey<Variant, Extend>}`]: string;
 };
-/** palette type */
-export type PalettenData<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends number[] | unknown = [], Prefix extends string | unknown = unknown> = Prefix extends string ? PalettenDataWithPrefix<Variant, Extend, Prefix> : PalettenDataBasic<Variant, Extend>;
-type PalettenDataWithPrefix<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends number[] | unknown = [], Prefix extends string = string> = {
-    [key in `${Prefix}${PalettenDataVariantKey<Variant>}`]: string;
-} & ExtendPalettenDataWithPrefix<Extend, Prefix>;
-type PalettenDataBasic<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends number[] | unknown = []> = {
-    [key in PalettenDataVariantKey<Variant>]: string;
-} & ExtendPalettenData<Extend>;
-/** extend */
-type ExtendPalettenDataWithPrefix<Extend extends number[] | unknown = [], Prefix extends string = string> = Extend extends number[] ? ExtendObjectWithPrefix<Extend, Prefix> : {};
-type ExtendPalettenData<Extend extends number[] | unknown> = Extend extends number[] ? ExtendObject<Extend> : {};
-/** extend object */
-type ExtendObjectWithPrefix<Extend extends number[], Prefix extends string> = {
-    [key in `${Prefix}${Extend[number]}`]: string;
+type PalettenDataNonePrefix<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends readonly number[] | unknown = []> = {
+    [key in `${PalettenDataVariantKey<Variant, Extend>}`]: string;
 };
-type ExtendObject<Extend extends number[]> = {
-    [key in Extend[number]]: string;
-};
-type PalettenDataVariantKey<Variant extends PalettenVariant | unknown> = Variant extends 'coarse' ? (typeof VARIANT_COARSE_KEYS)[number] : Variant extends 'fine' ? (typeof VARIANT_FINE_KEYS)[number] : (typeof VARIANT_STANDARD_KEYS)[number];
+type PalettenDataVariantKey<Variant extends PalettenVariant | unknown, Extend extends readonly number[] | unknown> = Extend extends readonly number[] ? Variant extends 'coarse' ? (typeof VARIANT_COARSE_KEYS)[number] | Extend[number] : Variant extends 'fine' ? (typeof VARIANT_FINE_KEYS)[number] | Extend[number] : (typeof VARIANT_STANDARD_KEYS)[number] | Extend[number] : Variant extends 'coarse' ? (typeof VARIANT_COARSE_KEYS)[number] : Variant extends 'fine' ? (typeof VARIANT_FINE_KEYS)[number] : (typeof VARIANT_STANDARD_KEYS)[number];
 export {};

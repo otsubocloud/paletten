@@ -21,7 +21,7 @@ $ npm i paletten
 ```jsx
 import { paletten } from 'paletten'
 
-const primary = paletten('#FF0000')
+const primary = paletten('#FF0000') // single argument
 
 return (
   <div style={{ color: primary[700] }}>
@@ -211,72 +211,19 @@ paletten({ 0: "hsl(200 10% 100%)", 100: "hsl(200 10% 95%)", 200: "hsl(200 10% 90
 ```jsx
 import { paletten, PalettenData } from 'paletten'
 
-const primary: PalettenData = paletten('#FF0000')
+const primary: PalettenData = paletten('#FF0000', { extend: [25] })
 
-primary[500] // ○ safe
-primary[240] // x error
-
+primary[25] // x error
 ```
 
-`variant` guard
+You will resolve above error with `as const` type as follows:
 ```jsx
 import { paletten, PalettenData } from 'paletten'
 
-type Palette = PalettenData<'coarse'>
-
-const primary: Palette = paletten('#FF0000', {
-  variant: 'coarse'
-})
-
-primary[100] // ○ safe
-primary[50] // x error
-```
-
-`extend` guard
-```jsx
-import { paletten, PalettenData } from 'paletten'
-
-type Palette = PalettenData<unknown, [10, 25, 75]>
-
-const primary: Palette = paletten('#FF0000', {
-  extend: [10, 25, 75],
-})
+const primary: PalettenData = paletten('#FF0000', { extend: [25] as const })
 
 primary[25] // ○ safe
 ```
-
-`prefix` guard
-```jsx
-import { paletten, PalettenData } from 'paletten'
-
-type Palette = PalettenData<unknown, unknown, '_'>
-
-const primary: Palette = paletten('#FF0000', {
-  prefix: '_'
-})
-
-primary._500 // ○ safe
-primary[500] // x error
-```
-
-Full guard
-```jsx
-import { paletten, PalettenData } from 'paletten'
-
-type Palette = PalettenData<'coarse', [333], '_'>
-
-const primary: Palette = paletten('#FF0000', {
-  variant: 'coarse',
-  extend: [333],
-  prefix: '_'
-})
-
-primary._500 // ○ safe
-primary._333 // ○ safe
-primary[333] // x error
-primary._950 // x error
-```
-
 
 
 ## Standardize Multiple Palettes with `Paletten` Class

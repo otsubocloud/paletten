@@ -3,6 +3,7 @@ export default class Paletten {
     constructor(commonConfig) {
         this.config = undefined;
         // noinspection SpellCheckingInspection
+        // @ts-ignore
         this.paletten = (value, options) => {
             return _paletten(value, Object.assign(Object.assign({}, this.config), options));
         };

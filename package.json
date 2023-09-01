@@ -1,6 +1,6 @@
 {
   "name": "paletten",
-  "version": "0.0.21-beta",
+  "version": "0.0.5-beta",
   "description": "Simple color palette tokens generator",
   "main": "./build/esm/index.js",
   "scripts": {
