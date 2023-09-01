@@ -1,34 +1,32 @@
 {
   "name": "paletten",
-  "type": "module",
-  "version": "0.0.14-dev",
-  "description": "Color-palette tokens generator",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "version": "0.0.2-beta",
+  "description": "Simple color palette tokens generator",
+  "main": "./build/esm/index.js",
   "scripts": {
     "test": "jest",
-    "build": "npm pack",
+    "build": "tsc -d -p ./tsconfig.cjs.json & tsc -d -p ./tsconfig.esm.json",
     "assetgen": "node --experimental-specifier-resolution=node ./__dev__/assetgen/main.js"
   },
   "exports": {
-    ".": "./build/index.js",
-    "./src": "./src/index.ts"
+    ".": {
+      "browser": "./build/esm/index.js",
+      "umd": "./build/esm/index.js",
+      "import": "./build/esm/index.js",
+      "require": "./build/cjs/index.js"
+    }
   },
   "files": [
     "build",
     "package.json",
-    "README.md",
-    "assets"
+    "README.md"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/otsubocloud/paletten.git"
   },
-  "author": "",
+  "author": "yoshimasa otsubo",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/otsubocloud/paletten/issues"
-  },
   "homepage": "https://github.com/otsubocloud/paletten#readme",
   "dependencies": {},
   "devDependencies": {
