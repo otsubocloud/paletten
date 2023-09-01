@@ -26,6 +26,7 @@ export type PalettenFunc = <Variant extends PalettenVariant | undefined = Palett
 }, options?: {
     variant?: Variant;
     extend?: Extend;
+    format?: 'hex' | 'hsl' | 'rgb';
     prefix?: Prefix;
     reversed?: Reversed;
 }) => Reversed extends true ? {
