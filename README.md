@@ -21,7 +21,7 @@ $ npm i paletten
 ```jsx
 import { paletten } from 'paletten'
 
-const primary = paletten('#FF0000') // single argument
+const primary = paletten('#FF0000') 
 
 return (
   <div style={{ color: primary[700] }}>
@@ -91,7 +91,7 @@ console.log(Object.keys(primary))
 
 ```jsx
 const primary = paletten('#FF0000', { reversed: true })
-primary[100] // <-- will be `primary[900]` value of default.
+primary[100] // replaced `primary[900]`
 ```
 
 ## Adjusted Coloring Templates
@@ -209,17 +209,13 @@ paletten({ 0: "hsl(200 10% 100%)", 100: "hsl(200 10% 95%)", 200: "hsl(200 10% 90
 
 ## Type Guard
 ```jsx
-import { paletten, PalettenData } from 'paletten'
-
 const primary: PalettenData = paletten('#FF0000', { extend: [25] })
 
-primary[25] // x error
+primary[25] // x type error
 ```
 
 You will resolve above error with `as const` type as follows:
 ```jsx
-import { paletten, PalettenData } from 'paletten'
-
 const primary: PalettenData = paletten('#FF0000', { extend: [25] as const })
 
 primary[25] // ○ safe
