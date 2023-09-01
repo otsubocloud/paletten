@@ -23,7 +23,9 @@ export type Options = {
 };
 export type PalettenFunc = <T>(value: string | {
     [p in number | string]: string;
-}, options?: Options) => T extends PalettenDataWithPrefix ? T : T extends PalettenDataBasic ? T : PalettenDataBasic;
+}, options?: Options) => T extends PalettenDataWithPrefix ? T : T extends PalettenDataBasic ? T : {
+    [p: string]: string;
+};
 /** palette type */
 export type PalettenData<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends number[] | unknown = [], Prefix extends string | unknown = unknown> = Prefix extends string ? PalettenDataWithPrefix<Variant, Extend, Prefix> : PalettenDataBasic<Variant, Extend>;
 type PalettenDataWithPrefix<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends number[] | unknown = [], Prefix extends string = string> = {

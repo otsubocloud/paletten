@@ -21,7 +21,7 @@ $ npm i paletten
 ```jsx
 import { paletten } from 'paletten'
 
-const primary = paletten('#FF0000') // single argument
+const primary = paletten('#FF0000')
 
 return (
   <div style={{ color: primary[700] }}>
