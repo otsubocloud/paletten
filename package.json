@@ -1,6 +1,6 @@
 {
   "name": "paletten",
-  "version": "0.0.52-beta",
+  "version": "0.0.6-beta",
   "description": "Simple color palette tokens generator",
   "main": "./build/esm/index.js",
   "scripts": {
@@ -35,5 +35,13 @@
     "prettier": "^3.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.6"
-  }
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "color schema",
+    "color palette",
+    "color tokens",
+    "design tokens"
+  ]
 }

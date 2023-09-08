@@ -5,7 +5,6 @@ class Paletten {
     constructor(commonConfig) {
         this.config = undefined;
         // noinspection SpellCheckingInspection
-        // @ts-ignore
         this.paletten = (value, options) => {
             return (0, index_1.paletten)(value, Object.assign(Object.assign({}, this.config), options));
         };

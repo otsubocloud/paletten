@@ -156,7 +156,7 @@ function generateCalcData(data) {
         }
     });
     // assign first
-    if (!keys.includes(0)) {
+    if (!(0 in keys)) {
         const zeroHsl = data[0];
         const nextCalc = arr[0];
         if (nextCalc) {

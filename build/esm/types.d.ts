@@ -29,9 +29,7 @@ export type PalettenFunc = <Variant extends PalettenVariant | undefined = Palett
     format?: 'hex' | 'hsl' | 'rgb';
     prefix?: Prefix;
     reversed?: Reversed;
-}) => Reversed extends true ? {
-    [p: string]: string;
-} : PalettenData<Variant, Extend, Prefix>;
+}) => PalettenData<Variant, Extend, Prefix>;
 export type PalettenData<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends readonly number[] | unknown = [], Prefix extends string | unknown = unknown> = Prefix extends string ? PalettenDataWithPrefix<Variant, Extend, Prefix> : PalettenDataNonePrefix<Variant, Extend>;
 type PalettenDataWithPrefix<Variant extends PalettenVariant | unknown = PalettenVariant, Extend extends readonly number[] | unknown = [], Prefix extends string = string> = {
     [key in `${Prefix}${PalettenDataVariantKey<Variant, Extend>}`]: string;

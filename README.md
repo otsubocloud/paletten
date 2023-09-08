@@ -2,11 +2,28 @@
 
 Simple color tokens generator. [beta]
 
-`paletten` automatically generates color-tokens from just a color code. 
+`paletten` automatically generates color tokens from just a color code. 
 ```js
-const colorTokens = paletten('hsl(200 80% 50%)')
+const steps = paletten('hsl(200 80% 50%)')
 ```
 ![sample](https://drive.google.com/uc?export=view&id=1S7sJqeTOcbKbkGbqxNYl0fNTRiT088CZ)
+```js
+console.log(steps)
+
+{
+  "50": "#E8F6FC",
+  "100": "#D1ECFA",
+  "200": "#A3DAF5",
+  "300": "#75C7F0",
+  "400": "#47B4EB",
+  "500": "#19A1E6",
+  "600": "#168BC5",
+  "700": "#1274A5",
+  "800": "#0F5E85",
+  "900": "#0B4765",
+  "950": "#093C55"
+}
+```
 
 ## Install
 
@@ -79,12 +96,22 @@ console.log(primary[500])
 
 ```jsx
 const primary = paletten('#FF0000', { variant: 'fine' })
+
 console.log(Object.keys(primary))
-// result: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900]
+// result: [50, 100, 150, 200, 250, 300, 350, 400, 450,
+// 500, 550, 600, 650, 700, 750, 800, 850, 900, 950]
+```
+
+```jsx
+const primary = paletten('#FF0000', { variant: 'coarse' })
+
+console.log(Object.keys(primary))
+// result: [100, 200, 300, 400, 500, 600, 700, 800, 900]
 ```
 
 ```jsx
 const primary = paletten('#FF0000', { extend: [10, 75, 150] })
+
 console.log(Object.keys(primary))
 // result: [10, 50, 75, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 950]
 ```
@@ -209,14 +236,14 @@ paletten({ 0: "hsl(200 10% 100%)", 100: "hsl(200 10% 95%)", 200: "hsl(200 10% 90
 
 ## Type Guard
 ```jsx
-const primary: PalettenData = paletten('#FF0000', { extend: [25] })
+const primary = paletten('#FF0000', { extend: [25] })
 
 primary[25] // x type error
 ```
 
 You will resolve above error with `as const` type as follows:
 ```jsx
-const primary: PalettenData = paletten('#FF0000', { extend: [25] as const })
+const primary = paletten('#FF0000', { extend: [25] as const })
 
 primary[25] // ○ safe
 ```
@@ -252,15 +279,14 @@ return (
 
 ```ts
 function paletten(
-
   value: 
        | string                         // color code
        | { [key in number]: string },   // Set amounted keys range from 0 to 1000
   options?: {
     format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
     variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
-    extend?: number[],                           // e.g. [50,150,250]
-    prefix?: string,                             // e.g. '_'
+    extend?: number[],                           // e.g., [50,150,250]
+    prefix?: string,                             // e.g., '_'
     reversed?: boolean                           // default: false
   }
 )
@@ -271,8 +297,8 @@ function paletten(
 class Paletten(config: {
     format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
     variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
-    extend?: number[],                           // e.g. [50,150,250]
-    prefix?: string,                             // e.g. '_'
+    extend?: number[],                           // e.g., [50,150,250]
+    prefix?: string,                             // e.g., '_'
     reversed?: boolean                           // default: false
 })
 ```

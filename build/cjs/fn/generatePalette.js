@@ -15,9 +15,13 @@ function generatePalette(calcData, options) {
                 ? const_1.VARIANT_FINE_KEYS
                 : const_1.VARIANT_STANDARD_KEYS);
         if (extend) {
-            const extendKeys = extend.filter(key => typeof key === 'number' &&
-                key < 1000 &&
-                !variantKeys.includes(key));
+            const extendSteps = (() => {
+                if (!reversed)
+                    return extend;
+                return extend.map(key => 1000 - key);
+            })();
+            const extendKeys = extendSteps.filter(key => 0 <= key && key <= 1000 &&
+                !(key in variantKeys));
             return (0, sort_1.default)(variantKeys.concat(extendKeys));
         }
         return (0, sort_1.default)(variantKeys);
