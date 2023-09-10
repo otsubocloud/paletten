@@ -3,13 +3,12 @@
 Simple color tokens generator. [beta]
 
 `paletten` automatically generates color tokens from just a color code. 
+
 ```js
-const steps = paletten('hsl(200 80% 50%)')
+const steps = paletten('#19A1E6')
 ```
 ![sample](https://drive.google.com/uc?export=view&id=1S7sJqeTOcbKbkGbqxNYl0fNTRiT088CZ)
 ```js
-console.log(steps)
-
 {
   "50": "#E8F6FC",
   "100": "#D1ECFA",
@@ -33,47 +32,41 @@ $ npm i paletten
 
 ## Usage
 
-
-
+Generate steps from just a color code
 ```jsx
 import { paletten } from 'paletten'
 
-const primary = paletten('#FF0000') 
+const primary = paletten('#FF0000')
 
 return (
-  <div style={{ color: primary[700] }}>
-    Dark Red Text
-  </div>
+  <div style={{
+    color: primary[500],
+    background: primary[50]
+  }} />
 )
 ```
 
-[//paletten will automatically generate other values.]: # ()
+Generate steps from multiple values
 ```jsx
 const violet = paletten({
     200: 'hsl(260 83% 76%)',
     700: 'hsl(260 79% 38%)',
 })
 
-return (
-  <div style={{ color: violet[500] }}>
-    Vivid Violet Text
-  </div>
-)
-```
-
-[//// You can set values range from 0 to 1000]: # ()
-```jsx
 const gray = paletten({
     0: 'hsl(0,0%,100%)',
     1000: 'hsl(0,0%,13%)',
 })
 
+
 return (
-  <div style={{ color: gray[400] }}>
-    Gray Text
-  </div>
+  <div style={{
+    color: violet[500],
+    background: gray[50]
+  }} />
 )
 ```
+
 
 ### Options
 ```jsx
@@ -118,6 +111,7 @@ console.log(Object.keys(primary))
 
 ```jsx
 const primary = paletten('#FF0000', { reversed: true })
+
 primary[100] // replaced `primary[900]`
 ```
 
@@ -279,9 +273,11 @@ return (
 
 ```ts
 function paletten(
+
   value: 
        | string                         // color code
        | { [key in number]: string },   // Set amounted keys range from 0 to 1000
+
   options?: {
     format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
     variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'

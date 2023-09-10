@@ -20,8 +20,9 @@ function generatePalette(calcData, options) {
                     return extend;
                 return extend.map(key => 1000 - key);
             })();
-            const extendKeys = extendSteps.filter(key => 0 <= key && key <= 1000 &&
-                !(key in variantKeys));
+            const extendKeys = extendSteps.filter(key => 0 <= key &&
+                key <= 1000 &&
+                !variantKeys.includes(key));
             return (0, sort_1.default)(variantKeys.concat(extendKeys));
         }
         return (0, sort_1.default)(variantKeys);

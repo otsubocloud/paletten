@@ -15,8 +15,9 @@ export default function generatePalette(calcData, options) {
                     return extend;
                 return extend.map(key => 1000 - key);
             })();
-            const extendKeys = extendSteps.filter(key => 0 <= key && key <= 1000 &&
-                !(key in variantKeys));
+            const extendKeys = extendSteps.filter(key => 0 <= key &&
+                key <= 1000 &&
+                !variantKeys.includes(key));
             return sort(variantKeys.concat(extendKeys));
         }
         return sort(variantKeys);
