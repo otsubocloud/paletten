@@ -21,7 +21,7 @@ export type Options = {
     prefix?: string | undefined;
     reversed?: boolean | undefined;
 };
-export type PalettenFunc = <Variant extends PalettenVariant | undefined = PalettenVariant, Extend extends readonly number[] | undefined = undefined, Prefix extends string | undefined = undefined, Reversed extends boolean | undefined = undefined>(value: string | {
+export type PalettenFunc = <Variant extends PalettenVariant | undefined = 'standard', Extend extends readonly number[] | undefined = undefined, Prefix extends string | undefined = undefined, Reversed extends boolean | undefined = undefined>(value: string | {
     [p in number | string]: string;
 }, options?: {
     variant?: Variant;

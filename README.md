@@ -103,7 +103,7 @@ console.log(Object.keys(primary))
 ```
 
 ```jsx
-const primary = paletten('#FF0000', { extend: [10, 75, 150] })
+const primary = paletten('#FF0000', { extend: [10, 75, 150] as const })
 
 console.log(Object.keys(primary))
 // result: [10, 50, 75, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900, 950]
@@ -115,7 +115,80 @@ const primary = paletten('#FF0000', { reversed: true })
 primary[100] // replaced `primary[900]`
 ```
 
-## Adjusted Coloring Templates
+
+
+## Type Guard `(TypeScript Only)`
+```jsx
+const primary = paletten('#FF0000', { extend: [25] })
+
+primary[25] // x type error
+```
+
+You will resolve above error with `as const` suffix, as follows:
+```jsx
+const primary = paletten('#FF0000', { extend: [25] as const })
+
+primary[25] // ○ safe
+```
+
+
+## Standardize Multiple Palettes with `Paletten` Class
+
+```jsx
+import { Paletten } from 'paletten'
+
+const { paletten } = new Paletten({
+    variant: 'fine',
+    format: 'rgb',
+    extend: [25]
+})
+
+const primary = paletten('hsl(0 100% 60%)')
+const secondary = paletten('hsl(200 80% 60%)')
+
+return (
+    <>
+      <div style={{ background: primary[25] }}>
+        Primary Background
+      </div>
+      <div style={{ background: secondary[25] }}>
+        Secondary Background
+      </div>
+    </>
+)
+```
+
+## API
+
+```ts
+function paletten(
+
+  value: 
+       | string                         // color code
+       | { [key in number]: string },   // Set amounted keys range from 0 to 1000
+
+  options?: {
+    format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
+    variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
+    extend?: number[],                           // e.g., [50,150,250]
+    prefix?: string,                             // e.g., '_'
+    reversed?: boolean                           // default: false
+  }
+)
+```
+
+#### Class API
+```ts
+class Paletten(config: {
+    format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
+    variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
+    extend?: number[],                           // e.g., [50,150,250]
+    prefix?: string,                             // e.g., '_'
+    reversed?: boolean                           // default: false
+})
+```
+
+## Designed Coloring Templates
 
 ---
 ![red](https://drive.google.com/uc?export=view&id=1LZjwkfCwqTIWRtmwq91oKvgPcK3Kpiaz)
@@ -226,77 +299,6 @@ paletten({ 0: "hsl(0 0% 100%)", 100: "hsl(0 0% 95%)", 200: "hsl(0 0% 90%)", 500:
 ![blueGray](https://drive.google.com/uc?export=view&id=1yxeLPj7XODKoE_9EpaQkYvtX0X2fB-3Q)
 ```js
 paletten({ 0: "hsl(200 10% 100%)", 100: "hsl(200 10% 95%)", 200: "hsl(200 10% 90%)", 500: "hsl(200 10% 50%)", 1000: "hsl(200 10% 0%)" })
-```
-
-## Type Guard
-```jsx
-const primary = paletten('#FF0000', { extend: [25] })
-
-primary[25] // x type error
-```
-
-You will resolve above error with `as const` type as follows:
-```jsx
-const primary = paletten('#FF0000', { extend: [25] as const })
-
-primary[25] // ○ safe
-```
-
-
-## Standardize Multiple Palettes with `Paletten` Class
-
-```jsx
-import { Paletten } from 'paletten'
-
-const { paletten } = new Paletten({
-    variant: 'fine',
-    format: 'rgb',
-    extend: [25]
-})
-
-const primary = paletten('hsl(0 100% 60%)')
-const secondary = paletten('hsl(200 80% 60%)')
-
-return (
-    <>
-      <div style={{ background: primary[25] }}>
-        Primary Background
-      </div>
-      <div style={{ background: secondary[25] }}>
-        Secondary Background
-      </div>
-    </>
-)
-```
-
-## API
-
-```ts
-function paletten(
-
-  value: 
-       | string                         // color code
-       | { [key in number]: string },   // Set amounted keys range from 0 to 1000
-
-  options?: {
-    format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
-    variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
-    extend?: number[],                           // e.g., [50,150,250]
-    prefix?: string,                             // e.g., '_'
-    reversed?: boolean                           // default: false
-  }
-)
-```
-
-#### Class API
-```ts
-class Paletten(config: {
-    format?: 'hex' | 'hsl' | 'rgb',              // default: 'hex'
-    variant?: 'fine' | 'standard' | 'coarse',    // default: 'standard'
-    extend?: number[],                           // e.g., [50,150,250]
-    prefix?: string,                             // e.g., '_'
-    reversed?: boolean                           // default: false
-})
 ```
 
 ## License
