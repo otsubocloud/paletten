@@ -1,8 +1,11 @@
 # paletten
 
+[//]: # (Sorry for my poor English)
+
 ### Lightweight color steps generator
 
-`paletten` automatically generates design-color-tokens from just a color code.
+- `paletten` automatically generates design-color-tokens from just a color code.
+- This is zero-dependency **Type-Scriptable** library [gzipped-bundle size is lightly 3.4 kB](https://bundlejs.com/?q=paletten%400.5.0&treeshake=%5B*%5D).
 
 ```js
 const steps = paletten("hsl(140 70% 45%)")
@@ -26,7 +29,7 @@ const steps = paletten("hsl(140 70% 45%)")
 
 ### Use Cases
 - Use as brand-color tokens in your corporate project styled by CSS in JS.
-- Use as a palette for theme configuration of CSS/UI frameworks such as tailwind-css and panda-css, MUI, chakra-UI.
+- Use as a palette for theme configuration of CSS/UI frameworks such as tailwindcss and pandacss, MUI, Chakra UI.
 
 ## Install
 
