@@ -1,6 +1,6 @@
 {
   "name": "paletten",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Lightweight color steps generator",
   "main": "./dist/esm/index.js",
   "exports": {
