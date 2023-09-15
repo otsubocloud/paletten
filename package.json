@@ -1,23 +1,18 @@
 {
   "name": "paletten",
-  "version": "0.0.62-beta",
-  "description": "Simple color palette tokens generator",
-  "main": "./build/esm/index.js",
-  "scripts": {
-    "test": "jest",
-    "build": "tsc -d -p ./tsconfig.cjs.json & tsc -d -p ./tsconfig.esm.json",
-    "assetgen": "node --experimental-specifier-resolution=node ./__dev__/assetgen/main.js"
-  },
+  "version": "0.5.0",
+  "description": "Lightweight color steps generator",
+  "main": "./dist/esm/index.js",
   "exports": {
     ".": {
-      "browser": "./build/esm/index.js",
-      "umd": "./build/esm/index.js",
-      "import": "./build/esm/index.js",
-      "require": "./build/cjs/index.js"
+      "browser": "./dist/esm/index.js",
+      "umd": "./dist/esm/index.js",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     }
   },
   "files": [
-    "build",
+    "dist",
     "package.json",
     "README.md"
   ],
@@ -28,18 +23,11 @@
   "author": "yoshimasa otsubo",
   "license": "MIT",
   "homepage": "https://github.com/otsubocloud/paletten#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "@types/jest": "^29.5.3",
-    "jest": "^29.6.2",
-    "prettier": "^3.0.1",
-    "ts-jest": "^29.1.1",
-    "typescript": "^5.1.6"
-  },
   "keywords": [
     "palette",
     "colors",
     "colours",
+    "tokens",
     "design tokens",
     "design",
     "templates",
