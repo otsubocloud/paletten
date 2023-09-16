@@ -4,11 +4,12 @@
 
 ### Lightweight color steps generator
 
-- `paletten` automatically generates design-color-tokens from just a color code.
-- This is zero-dependency **Type-Scriptable** library [gzipped-bundle size is lightly 3.4 kB](https://bundlejs.com/?q=paletten%400.5.0&treeshake=%5B*%5D).
+- Automatically generates design-color-tokens from just a color code.
+- Zero-dependency **Type-Scriptable** library [gzipped-bundle size is lightly 3.4 kB](https://bundlejs.com/?q=paletten%400.5.0&treeshake=%5B*%5D).
+- Multiply supports ESModule and CommonJS. 
 
 ```js
-const steps = paletten("hsl(140 70% 45%)")
+const steps = paletten("#22c358")
 ```
 ![sample](https://dev.lineheight.cc/src/paletten/__sample.svg)
 ```js
@@ -29,7 +30,7 @@ const steps = paletten("hsl(140 70% 45%)")
 
 ### Use Cases
 - Use as brand-color tokens in your corporate project styled by CSS in JS.
-- Use as a palette for theme configuration of CSS/UI frameworks such as tailwindcss and pandacss, MUI, Chakra UI.
+- Use as palette data for theme configuration of CSS/UI frameworks such as tailwindcss and pandacss, MUI, Chakra UI.
 
 ## Install
 
@@ -75,49 +76,20 @@ return (
 ```
 
 
-### Options
-
-Add prefix to object keys
-
-```jsx
-const primary = paletten('#FF0000', { prefix: '_' })
-
-return (
-  <div style={{ color: primary._500 }}>
-    Gray Text
-  </div>
-)
-
-```
-
-Set format of color codes 
-
-```jsx
-const primary = paletten('#FF0000', { format: 'hsl' })
-
-console.log(primary[500])
-// result: 'hsl(0, 100%, 50%)'
-```
+## Options
 
 Set a template of step keys
 
 ```jsx
-const primary = paletten('#FF0000', { steps: 'standard' })
+const standard = paletten('#FF0000', { steps: 'standard' })
+const coarse = paletten('#FF0000', { steps: 'coarse' })
+const fine = paletten('#FF0000', { steps: 'fine' })
 
-console.log(Object.keys(primary))
+console.log(Object.keys(standard))
 // result: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
-```
-
-```jsx
-const primary = paletten('#FF0000', { steps: 'coarse' })
-
-console.log(Object.keys(primary))
+console.log(Object.keys(coarse))
 // result: [100, 200, 300, 400, 500, 600, 700, 800, 900]
-```
-```jsx
-const primary = paletten('#FF0000', { steps: 'fine' })
-
-console.log(Object.keys(primary))
+console.log(Object.keys(fine))
 // result: [50, 100, 150, 200, 250, 300, 350, 400, 450,
 // 500, 550, 600, 650, 700, 750, 800, 850, 900, 950]
 ```
@@ -135,12 +107,11 @@ Extend step keys
 
 ```tsx
 const primary = paletten('#FF0000', {
-  steps: 'coarse',
   extend: [10, 75, 150] as const
 })
 
 console.log(Object.keys(primary))
-// result: [10, 75, 100, 150, 200, 300, 400, ... ]
+// result: [10, 50, 75, 100, 150, 200, 300, 400, ... ]
 ```
 
 Reverse mapping of step keys
@@ -150,6 +121,7 @@ const primary = paletten('#FF0000', { reversed: true })
 
 primary[100] // replaced `primary[900]`
 ```
+
 
 Finely adjust all colors at once
 
@@ -174,6 +146,28 @@ const transparencyPalette = paletten('#FF0000', {
   alpha: 0.6,
 })
 
+```
+
+Add prefix to object keys
+
+```jsx
+const primary = paletten('#FF0000', { prefix: '_' })
+
+return (
+  <div style={{ color: primary._500 }}>
+    Gray Text
+  </div>
+)
+
+```
+
+Set a format of color codes 
+
+```jsx
+const primary = paletten('#FF0000', { format: 'hsl' })
+
+console.log(primary[500])
+// result: 'hsl(0, 100%, 50%)'
 ```
 
 
